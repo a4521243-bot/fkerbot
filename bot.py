@@ -199,7 +199,7 @@ async def buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 Send LTC (Litecoin) to:
 
-LRvMZHB6rYK2cbQWqJf2WhVgNbkUuceBDM
+`LRvMZHB6rYK2cbQWqJf2WhVgNbkUuceBDM`
 
 ⚠ payment confirmation need 30 minutes maximum.
 """,
