@@ -43,11 +43,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"""
 🍓 Welcome to marwkvibot 🍓
     Very High Quality
-         SHOP
-       And Safe
-✅Available Everyday✅
-       @marwkvibot
-       /start
+    Addresses✅
+    Availble✅
+    @marwkvibot
+    /start
 
 👤 User ID: {user_id}
 💰 Balance: ₾{balance:.2f}
@@ -224,11 +223,10 @@ LRvMZHB6rYK2cbQWqJf2WhVgNbkUuceBDM
             f"""
 🍓 Welcome to marwkvibot 🍓
     Very High Quality
-         SHOP
-       And Safe
-✅Available Everyday✅
-       @marwkvibot
-       /start
+    Addresses✅
+    Availble✅
+    @marwkvibot
+    /start
 
 👤 User ID: {user_id}
 💰 Balance: ₾{balance:.2f}
