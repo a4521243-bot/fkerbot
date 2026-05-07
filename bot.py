@@ -47,7 +47,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
        @marwkvibot
 
 👤 User ID: {user_id}
-💰 Balance: ${balance:.2f}
+💰 Balance: ₾{balance:.2f}
 Choose product:
 """,
         reply_markup=reply_markup
@@ -79,7 +79,7 @@ async def buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ]
 
         await query.edit_message_text(
-            f"🍀 Weed\n\n💰 Your Balance: ${balance:.2f}",
+            f"🍀 Weed\n\n💰 Your Balance: ₾{balance:.2f}",
             reply_markup=InlineKeyboardMarkup(keyboard)
         )
 
