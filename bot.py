@@ -43,7 +43,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"""
 🍓 welcome to marwkvibot 🍓
      Very High Quality
-
+        /start
        @marwkvibot
 
 👤 User ID: {user_id}
@@ -221,7 +221,7 @@ LRvMZHB6rYK2cbQWqJf2WhVgNbkUuceBDM
             f"""
 🍓 welcome to marwkvibot 🍓
      Very High Quality
-
+        /start
        @marwkvibot
 
 👤 User ID: {user_id}
