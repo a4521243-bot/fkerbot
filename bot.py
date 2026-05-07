@@ -48,6 +48,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 👤 User ID: {user_id}
 💰 Balance: ₾{balance:.2f}
+📍 Tbilisi
 Choose product:
 """,
         reply_markup=reply_markup
