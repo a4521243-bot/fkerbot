@@ -42,12 +42,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         f"""
 🍓 Welcome to marwkvibot 🍓
-     Very High Quality
-  Only building Addresses
-          And Safe
-    ✅Available Everyday✅
-        /start
+    Very High Quality
+         SHOP
+       And Safe
+✅Available Everyday✅
        @marwkvibot
+       /start
 
 👤 User ID: {user_id}
 💰 Balance: ₾{balance:.2f}
@@ -223,12 +223,12 @@ LRvMZHB6rYK2cbQWqJf2WhVgNbkUuceBDM
         await query.edit_message_text(
             f"""
 🍓 Welcome to marwkvibot 🍓
-     Very High Quality
-    Only building Addresses
-          And Safe
-    ✅Available Everyday✅
-        /start
+    Very High Quality
+         SHOP
+       And Safe
+✅Available Everyday✅
        @marwkvibot
+       /start
 
 👤 User ID: {user_id}
 💰 Balance: ₾{balance:.2f}
