@@ -219,11 +219,14 @@ LRvMZHB6rYK2cbQWqJf2WhVgNbkUuceBDM
 
         await query.edit_message_text(
             f"""
-🔥 Welcome To Premium Services 🔥
+🍓 welcome to marwkvibot 🍓
+     Very High Quality
+
+       @marwkvibot
 
 👤 User ID: {user_id}
-💰 Balance: ${balance:.2f}
-
+💰 Balance: ₾{balance:.2f}
+📍 Tbilisi
 Choose option:
 """,
             reply_markup=InlineKeyboardMarkup(keyboard)
