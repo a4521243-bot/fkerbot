@@ -44,7 +44,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 🍓 Welcome to marwkvibot 🍓
     Very High Quality
     Addresses✅
-    Availble✅
+    Available✅
     @marwkvibot
     /start
 
@@ -224,7 +224,7 @@ LRvMZHB6rYK2cbQWqJf2WhVgNbkUuceBDM
 🍓 Welcome to marwkvibot 🍓
     Very High Quality
     Addresses✅
-    Availble✅
+    Available✅
     @marwkvibot
     /start
 
