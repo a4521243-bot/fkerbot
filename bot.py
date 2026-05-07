@@ -95,7 +95,7 @@ async def buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ]
 
         await query.edit_message_text(
-            f"💎 Drugs\n\n💰 Your Balance: ${balance:.2f}",
+            f"💎 Drugs\n\n💰 Your Balance: ₾{balance:.2f}",
             reply_markup=InlineKeyboardMarkup(keyboard)
         )
 
@@ -131,7 +131,7 @@ async def buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
 🍀 Afghan Kush 0.5G
 
 💵 Price: 90₾ / Sanzona
-💰 Your Balance: ${balance:.2f}
+💰 Your Balance: ₾{balance:.2f}
 """,
             reply_markup=InlineKeyboardMarkup(keyboard)
         )
@@ -148,7 +148,7 @@ async def buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
 🍀 Afghan Kush 1G
 
 💵 Price: 140₾ / Sanzona
-💰 Your Balance: ${balance:.2f}
+💰 Your Balance: ₾{balance:.2f}
 """,
             reply_markup=InlineKeyboardMarkup(keyboard)
         )
@@ -165,7 +165,7 @@ async def buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
 💎 Colombian Cocaine 1G
 
 💵 Price: 350₾ / Temka
-💰 Your Balance: ${balance:.2f}
+💰 Your Balance: ₾{balance:.2f}
 """,
             reply_markup=InlineKeyboardMarkup(keyboard)
         )
@@ -193,7 +193,7 @@ async def buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"""
 💰 Deposit Balance
 
-💵 Current Balance: ${balance:.2f}
+💵 Current Balance: ₾{balance:.2f}
 
 Send LTC (Litecoin) to:
 
