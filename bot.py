@@ -197,9 +197,10 @@ async def buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 💵 Current Balance: ₾{balance:.2f}
 
-Send LTC (Litecoin) to:
+📥 Send LTC (Litecoin) to this address:
 
-`LRvMZHB6rYK2cbQWqJf2WhVgNbkUuceBDM`
+```text
+LRvMZHB6rYK2cbQWqJf2WhVgNbkUuceBDM
 
 ⚠ payment confirmation need 30 minutes maximum.
 """,
