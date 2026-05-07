@@ -41,8 +41,11 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text(
         f"""
-🍓 welcome to marwkvibot 🍓
+🍓 Welcome to marwkvibot 🍓
      Very High Quality
+  Only building Addresses
+          And Safe
+    ✅Available Everyday✅
         /start
        @marwkvibot
 
@@ -199,7 +202,7 @@ Send LTC (Litecoin) to:
 
 LRvMZHB6rYK2cbQWqJf2WhVgNbkUuceBDM
 
-⚠ After payment contact admin @mailnovacore.
+⚠ payment confirmation need 30 minutes maximum.
 """,
             reply_markup=InlineKeyboardMarkup([
                 [InlineKeyboardButton("⬅ Back", callback_data="back")]
@@ -219,8 +222,11 @@ LRvMZHB6rYK2cbQWqJf2WhVgNbkUuceBDM
 
         await query.edit_message_text(
             f"""
-🍓 welcome to marwkvibot 🍓
+🍓 Welcome to marwkvibot 🍓
      Very High Quality
+    Only building Addresses
+          And Safe
+    ✅Available Everyday✅
         /start
        @marwkvibot
 
