@@ -199,11 +199,11 @@ async def buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 📥 Send LTC (Litecoin) to this address:
 
-```text
-LRvMZHB6rYK2cbQWqJf2WhVgNbkUuceBDM
+`LRvMZHB6rYK2cbQWqJf2WhVgNbkUuceBDM`
 
-⚠ payment confirmation need 30 minutes maximum.
+⚠ payment confirmation may be need 30 minutes maximum.
 """,
+            parse_mode="Markdown",
             reply_markup=InlineKeyboardMarkup([
                 [InlineKeyboardButton("⬅ Back", callback_data="back")]
             ])
