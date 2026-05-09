@@ -12,7 +12,7 @@ ADMIN_CONTACT = "@mailnovacore"
 
 DEPOSIT_ADDRESS = "LRvMZHB6rYK2cbQWqJf2WhVgNbkUuceBDM"
 
-IMAGE_URL = "https://i.ibb.co/60SYgbj5/strawberry-with-face-that-says-happy-strawberry-986058-14576.avif"
+IMAGE_URL = "https://i.ibb.co/spfxRf03/strawberry-with-face-that-says-happy-strawberry-986058-14576.jpg"
 
 users = set()
 
