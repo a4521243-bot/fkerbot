@@ -15,11 +15,13 @@ import os
 
 TOKEN = os.getenv("BOT_TOKEN")
 
+# =========================
 # DATA
+# =========================
 user_balances = {}
-
-ADMINS = [8721950488]  # 🔁 replace with your Telegram ID
 total_users = set()
+
+ADMINS = [8721950488]  # replace with your Telegram ID
 
 
 # =========================
@@ -41,8 +43,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("💰 Deposit", callback_data="deposit")]
     ]
 
-    reply_markup = InlineKeyboardMarkup(keyboard)
-
     await update.message.reply_photo(
         photo="https://i.ibb.co/60SYgbj5/strawberry-with-face-that-says-happy-strawberry-986058-14576.avif",
         caption=f"""
@@ -51,14 +51,12 @@ Very High Quality
 Addresses✅
 Available✅
 @marwkvibot
-/start
 
 👤 User ID: {user_id}
 💰 Balance: ₾{balance:.2f}
 📍 Tbilisi
-Choose product:
 """,
-        reply_markup=reply_markup
+        reply_markup=InlineKeyboardMarkup(keyboard)
     )
 
 
@@ -111,7 +109,7 @@ async def buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ]
 
         await query.edit_message_text(
-            f"🍀 Weed\n💰 ₾{balance:.2f}",
+            f"🍀 Weed Menu\n💰 ₾{balance:.2f}",
             reply_markup=InlineKeyboardMarkup(keyboard)
         )
 
@@ -149,20 +147,30 @@ LRvMZHB6rYK2cbQWqJf2WhVgNbkUuceBDM
         ]
 
         await query.edit_message_text(
-            f"Welcome back\nUser: {user_id}\nBalance: ₾{balance:.2f}",
+            f"""
+Welcome back
+
+👤 {user_id}
+💰 ₾{balance:.2f}
+""",
             reply_markup=InlineKeyboardMarkup(keyboard)
         )
 
 
 # =========================
-# BOT START (RAILWAY FIXED)
+# SAFE RAILWAY START (FIXED)
+# =========================
+async def post_init(app):
+    # 🔥 IMPORTANT FIX FOR RAILWAY + TELEGRAM CONFLICT
+    await app.bot.delete_webhook(drop_pending_updates=True)
+
+
+# =========================
+# RUN BOT
 # =========================
 if __name__ == "__main__":
 
-    app = ApplicationBuilder().token(TOKEN).build()
-
-    # 🔥 IMPORTANT: kill webhook + old sessions (FIX RAILWAY ISSUE)
-    app.bot.delete_webhook(drop_pending_updates=True)
+    app = ApplicationBuilder().token(TOKEN).post_init(post_init).build()
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("admin", admin))
