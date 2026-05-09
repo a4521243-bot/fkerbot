@@ -31,7 +31,7 @@ PRODUCTS = {
 # =========================
 def main_menu_caption():
     return (
-        "👋 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 MARWKVIBOT\n\n"
+        "👋 🍓𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 𝗠𝗔𝗥𝗪𝗞𝗩𝗜𝗕𝗢𝗧🍓👋 \n\n"
         "🔐 Anonymous & Secure Coffeshop\n"
         "⚡ Instant and Very High Quality\n"
         "💎 Payment: Litecoin (LTC)\n\n"
