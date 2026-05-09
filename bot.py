@@ -21,9 +21,9 @@ users = set()
 # =========================
 PRODUCTS = {
     "virtual": "🍀 Afghan Kush 0.5G\n\n✔ Addresses\n✔ Available\n✔ Sanzona\n💵 Price: ₾85",
-    "virtual": "🍀 Afghan Kush 1G\n\n✔ Addresses\n✔ Available\n✔ Sanzona\n💵 Price: ₾140",
-    "virtual": "💎 Coca VHQ 1G\n\n✔ Addresses\n✔ Available\n✔ Temka\n💵 Price: ₾500",
-    "virtual": "💎 Coca VHQ 0.5G\n\n✔ Addresses\n✔ Available\n✔ Gldani\n💵 Price: ₾270",
+    "federal": "🍀 Afghan Kush 1G\n\n✔ Addresses\n✔ Available\n✔ Sanzona\n💵 Price: ₾140",
+    "sms": "💎 Coca VHQ 1G\n\n✔ Addresses\n✔ Available\n✔ Temka\n💵 Price: ₾500",
+    "email": "💎 Coca VHQ 0.5G\n\n✔ Addresses\n✔ Available\n✔ Gldani\n💵 Price: ₾270",
 }
 
 # =========================
@@ -31,17 +31,13 @@ PRODUCTS = {
 # =========================
 def main_menu_caption():
     return (
-        "👋 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 𝗦𝗘𝗥𝗩𝗜𝗖𝗘 𝗕𝗢𝗧\n\n"
+        "👋 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 MARWKVIBOT\n\n"
         "🔐 Anonymous & Secure Platform\n"
-        "⚡ Instant Digital Services\n"
+        "⚡ Instant and Very High Quality\n"
         "💎 Payment: Litecoin (LTC)\n\n"
-        "━━━━━━━━━━━━━━━━━━\n"
-        "🍀 Afghan Kush 0.5G - 85₾\n"
-        "🍀 Afghan Kush 1G - 140₾\n"
-        "💎 Coca VHQ 1G - 500₾\n"
-        "💎 Coca VHQ 0.5G - 270₾\n"
+        "📍Locations: Tbilisi\n"
         "━━━━━━━━━━━━━━━━━━\n\n"
-        "👇 Choose a service below:"
+        "👇 Choose a product below:"
     )
 
 # =========================
