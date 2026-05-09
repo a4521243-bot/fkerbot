@@ -1,168 +1,198 @@
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
 import os
-
-TOKEN = os.getenv("BOT_TOKEN")
-
-# DATA
-user_balances = {}
-total_users = set()
-
-ADMINS = [123456789]  # replace with your Telegram ID
-
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
 
 # =========================
-# START (WITH IMAGE)
+# CONFIG
+# =========================
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+
+ADMIN_ID = 8721950488
+ADMIN_CONTACT = "@mailnovacore"
+
+DEPOSIT_ADDRESS = "LRvMZHB6rYK2cbQWqJf2WhVgNbkUuceBDM"
+
+IMAGE_URL = "https://i.ibb.co/7d0qYBfN/Chat-GPT-Image-May-8-2026-02-51-14-PM.png"
+
+users = set()
+
+# =========================
+# PRODUCT INFO
+# =========================
+PRODUCTS = {
+    "virtual": "📱 Virtual Numbers\n\n✔ Temporary & permanent numbers\n✔ Multi-country support\n✔ Secure activation\n💵 Price: $200",
+    "federal": "📞 Federal Numbers\n\n✔ High quality dedicated numbers\n✔ Business use ready\n✔ Stable connectivity\n💵 Price: $500",
+    "sms": "📨 SMS Service\n\n✔ Bulk SMS sending system\n✔ Fast delivery network\n✔ Global coverage\n💵 Price: $100 / month",
+    "email": "✉️ Email Service\n\n✔ Bulk email sending\n✔ Marketing automation\n✔ High deliverability\n💵 Price: $150"
+}
+
+# =========================
+# MENU TEXT (SAME FOR START & MENU)
+# =========================
+def main_menu_caption():
+    return (
+        "👋 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 𝗦𝗘𝗥𝗩𝗜𝗖𝗘 𝗕𝗢𝗧\n\n"
+        "🔐 Anonymous & Secure Platform\n"
+        "⚡ Instant Digital Services\n"
+        "💎 Payment: Litecoin (LTC)\n\n"
+        "━━━━━━━━━━━━━━━━━━\n"
+        "🍀 Afghan Kush 0.5G - 85₾\n"
+        "🍀 Afghan Kush 1G - 140₾\n"
+        "💎 Coca VHQ 1G - 500₾\n"
+        "💎 Coca VHQ 0.5G - 270₾\n"
+        "━━━━━━━━━━━━━━━━━━\n\n"
+        "👇 Choose a service below:"
+    )
+
+# =========================
+# MENU BUTTONS
+# =========================
+def main_menu():
+    return InlineKeyboardMarkup([
+        [InlineKeyboardButton("🍀 Afghan Kush 0.5G - 85₾", callback_data="virtual")],
+        [InlineKeyboardButton("🍀 Afghan Kush 1G - 140₾", callback_data="federal")],
+        [InlineKeyboardButton("💎 Coca VHQ 1G - 500₾", callback_data="sms")],
+        [InlineKeyboardButton("💎 Coca VHQ 0.5G - 270₾", callback_data="email")],
+        [InlineKeyboardButton("💰 Balance", callback_data="balance")],
+        [InlineKeyboardButton("💳 Deposit LTC", callback_data="deposit")]
+    ])
+
+# =========================
+# START (IMAGE + WELCOME)
 # =========================
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
-    user_id = update.effective_user.id
-    total_users.add(user_id)
-
-    if user_id not in user_balances:
-        user_balances[user_id] = 0.0
-
-    balance = user_balances[user_id]
-
-    keyboard = [
-        [InlineKeyboardButton("🍀 Digital Pack", callback_data="voip")],
-        [InlineKeyboardButton("💎 Premium Access", callback_data="email")],
-        [InlineKeyboardButton("💰 Deposit", callback_data="deposit")]
-    ]
+    users.add(update.effective_user.id)
 
     await update.message.reply_photo(
-        photo="https://i.ibb.co/60SYgbj5/strawberry-with-face-that-says-happy-strawberry-986058-14576.avif",
-        caption=f"""
-🍓 Welcome 🍓
-
-👤 User ID: {user_id}
-💰 Balance: ₾{balance:.2f}
-""",
-        reply_markup=InlineKeyboardMarkup(keyboard)
+        photo=IMAGE_URL,
+        caption=main_menu_caption(),
+        reply_markup=main_menu()
     )
-
 
 # =========================
 # ADMIN PANEL
 # =========================
 async def admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
-    user_id = update.effective_user.id
-
-    if user_id not in ADMINS:
-        await update.message.reply_text("❌ Access denied")
+    if update.effective_user.id != ADMIN_ID:
+        await update.message.reply_text("⛔ Access denied")
         return
 
-    total_balance = sum(user_balances.values())
-
-    text = f"""
-📊 ADMIN PANEL
-
-👥 Users: {len(total_users)}
-💰 Total Balance: ₾{total_balance:.2f}
-
-Users:
-"""
-
-    for uid, bal in user_balances.items():
-        text += f"\n• {uid} -> ₾{bal:.2f}"
-
-    await update.message.reply_text(text)
-
+    await update.message.reply_text(
+        "🛠 ADMIN PANEL\n\nChoose option:",
+        reply_markup=InlineKeyboardMarkup([
+            [InlineKeyboardButton("📊 Stats", callback_data="admin_stats")],
+            [InlineKeyboardButton("🏠 Menu", callback_data="menu")]
+        ])
+    )
 
 # =========================
-# CALLBACKS
+# CALLBACK HANDLER
 # =========================
-async def buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     query = update.callback_query
     await query.answer()
 
-    user_id = query.from_user.id
-    balance = user_balances.get(user_id, 0.0)
+    msg = query.message
 
-    # PRODUCT MENU 1
-    if query.data == "voip":
-        keyboard = [
-            [InlineKeyboardButton("Basic Digital Pack - $10", callback_data="item1")],
-            [InlineKeyboardButton("Pro Digital Pack - $25", callback_data="item2")],
-            [InlineKeyboardButton("⬅ Back", callback_data="back")]
-        ]
-
-        await query.edit_message_text(
-            f"🍀 Digital Packs\n💰 {balance:.2f}",
-            reply_markup=InlineKeyboardMarkup(keyboard)
+    # ================= SERVICES =================
+    if query.data in PRODUCTS:
+        await msg.reply_text(
+            PRODUCTS[query.data],
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("🛒 Buy Now", callback_data=f"buy_{query.data}")],
+                [InlineKeyboardButton("🔙 Menu", callback_data="menu")]
+            ])
         )
 
-    # PRODUCT MENU 2
-    elif query.data == "email":
-        keyboard = [
-            [InlineKeyboardButton("Premium Access 1 Month - $30", callback_data="item3")],
-            [InlineKeyboardButton("⬅ Back", callback_data="back")]
-        ]
+    # ================= BUY =================
+    elif query.data.startswith("buy_"):
 
-        await query.edit_message_text(
-            f"💎 Premium Menu\n💰 {balance:.2f}",
-            reply_markup=InlineKeyboardMarkup(keyboard)
+        service = query.data.replace("buy_", "")
+
+        await msg.reply_text(
+            f"🛒 ORDER CONFIRMATION\n\n"
+            f"{PRODUCTS.get(service, '')}\n\n"
+            "💎 Payment: Litecoin (LTC)\n\n"
+            f"📩 Address:\n`{DEPOSIT_ADDRESS}`\n\n"
+            "⚡ Tap & hold to copy\n\n"
+            f"👨‍💻 Support: {ADMIN_CONTACT}",
+            parse_mode="Markdown",
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("📋 Copy Address", callback_data="copy")],
+                [InlineKeyboardButton("🔙 Menu", callback_data="menu")]
+            ])
         )
 
-    # DEPOSIT
+    # ================= COPY =================
+    elif query.data == "copy":
+        await msg.reply_text(
+            f"📋 LTC ADDRESS:\n\n`{DEPOSIT_ADDRESS}`\n\n⚡ Tap & hold to copy",
+            parse_mode="Markdown",
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("🔙 Menu", callback_data="menu")]
+            ])
+        )
+
+    # ================= BALANCE =================
+    elif query.data == "balance":
+        await msg.reply_text(
+            "💰 BALANCE: $0\n💎 SYSTEM: LTC WALLET\n\n"
+            f"👨‍💻 {ADMIN_CONTACT}",
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("🔙 Menu", callback_data="menu")]
+            ])
+        )
+
+    # ================= DEPOSIT =================
     elif query.data == "deposit":
-        await query.edit_message_text(
-            f"""
-💰 Deposit
-
-Send funds to:
-YOUR_WALLET_ADDRESS_HERE
-
-Balance: ₾{balance:.2f}
-""",
+        await msg.reply_text(
+            "💳 LTC DEPOSIT\n\n"
+            f"📩 Address:\n`{DEPOSIT_ADDRESS}`\n\n"
+            "⚡ Tap & hold to copy\n\n"
+            f"👨‍💻 {ADMIN_CONTACT}",
+            parse_mode="Markdown",
             reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton("⬅ Back", callback_data="back")]
+                [InlineKeyboardButton("📋 Copy Address", callback_data="copy")],
+                [InlineKeyboardButton("🔙 Menu", callback_data="menu")]
             ])
         )
 
-    # ITEMS (NO PURCHASE LOGIC YET)
-    elif query.data in ["item1", "item2", "item3"]:
-        await query.message.reply_text(
-            "❌ Payment system not active yet.",
+    # ================= ADMIN STATS =================
+    elif query.data == "admin_stats":
+
+        if query.from_user.id != ADMIN_ID:
+            return
+
+        await msg.reply_text(
+            f"📊 USERS: {len(users)}\n\n💰 SYSTEM ACTIVE",
             reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton("💰 Deposit", callback_data="deposit")]
+                [InlineKeyboardButton("🔙 Menu", callback_data="menu")]
             ])
         )
 
-    # BACK
-    elif query.data == "back":
-        keyboard = [
-            [InlineKeyboardButton("🍀 Digital Pack", callback_data="voip")],
-            [InlineKeyboardButton("💎 Premium Access", callback_data="email")],
-            [InlineKeyboardButton("💰 Deposit", callback_data="deposit")]
-        ]
-
-        await query.edit_message_text(
-            f"""
-Welcome back
-
-👤 {user_id}
-💰 ₾{balance:.2f}
-""",
-            reply_markup=InlineKeyboardMarkup(keyboard)
+    # ================= MENU =================
+    elif query.data == "menu":
+        await msg.reply_text(
+            main_menu_caption(),
+            reply_markup=main_menu()
         )
 
-
 # =========================
-# MAIN (RAILWAY SAFE)
+# MAIN
 # =========================
-if __name__ == "__main__":
+def main():
 
-    app = ApplicationBuilder().token(TOKEN).build()
-
-    # SAFE webhook cleanup
-    app.bot.delete_webhook(drop_pending_updates=True)
+    app = Application.builder().token(BOT_TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("admin", admin))
-    app.add_handler(CallbackQueryHandler(buttons))
+    app.add_handler(CallbackQueryHandler(button_handler))
 
-    print("Bot Running...")
+    print("Bot running...")
     app.run_polling()
+
+if __name__ == "__main__":
+    main()
