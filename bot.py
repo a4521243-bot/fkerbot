@@ -1,31 +1,18 @@
-from telegram import (
-    Update,
-    InlineKeyboardButton,
-    InlineKeyboardMarkup
-)
-
-from telegram.ext import (
-    ApplicationBuilder,
-    CommandHandler,
-    CallbackQueryHandler,
-    ContextTypes,
-)
-
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
 import os
 
 TOKEN = os.getenv("BOT_TOKEN")
 
-# =========================
 # DATA
-# =========================
 user_balances = {}
 total_users = set()
 
-ADMINS = [8721950488]  # replace with your Telegram ID
+ADMINS = [123456789]  # replace with your Telegram ID
 
 
 # =========================
-# START
+# START (WITH IMAGE)
 # =========================
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
@@ -33,28 +20,23 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     total_users.add(user_id)
 
     if user_id not in user_balances:
-        user_balances[user_id] = 0.00
+        user_balances[user_id] = 0.0
 
     balance = user_balances[user_id]
 
     keyboard = [
-        [InlineKeyboardButton("🍀 Weed", callback_data="voip")],
-        [InlineKeyboardButton("💎 Drugs", callback_data="email")],
+        [InlineKeyboardButton("🍀 Digital Pack", callback_data="voip")],
+        [InlineKeyboardButton("💎 Premium Access", callback_data="email")],
         [InlineKeyboardButton("💰 Deposit", callback_data="deposit")]
     ]
 
     await update.message.reply_photo(
         photo="https://i.ibb.co/60SYgbj5/strawberry-with-face-that-says-happy-strawberry-986058-14576.avif",
         caption=f"""
-🍓 Welcome to marwkvibot 🍓
-Very High Quality
-Addresses✅
-Available✅
-@marwkvibot
+🍓 Welcome 🍓
 
 👤 User ID: {user_id}
 💰 Balance: ₾{balance:.2f}
-📍 Tbilisi
 """,
         reply_markup=InlineKeyboardMarkup(keyboard)
     )
@@ -68,7 +50,7 @@ async def admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
 
     if user_id not in ADMINS:
-        await update.message.reply_text("❌ Access denied.")
+        await update.message.reply_text("❌ Access denied")
         return
 
     total_balance = sum(user_balances.values())
@@ -76,10 +58,10 @@ async def admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = f"""
 📊 ADMIN PANEL
 
-👥 Total Users: {len(total_users)}
+👥 Users: {len(total_users)}
 💰 Total Balance: ₾{total_balance:.2f}
 
-📋 USERS:
+Users:
 """
 
     for uid, bal in user_balances.items():
@@ -89,60 +71,71 @@ async def admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 # =========================
-# CALLBACK HANDLER
+# CALLBACKS
 # =========================
 async def buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     query = update.callback_query
-    user_id = query.from_user.id
-
     await query.answer()
 
-    balance = user_balances.get(user_id, 0.00)
+    user_id = query.from_user.id
+    balance = user_balances.get(user_id, 0.0)
 
+    # PRODUCT MENU 1
     if query.data == "voip":
         keyboard = [
-            [InlineKeyboardButton("Afghan Kush 0.5G", callback_data="usa_numbers")],
-            [InlineKeyboardButton("Afghan Kush 1G", callback_data="canada_numbers")],
-            [InlineKeyboardButton("Afghan Kush 3G", callback_data="federal")],
+            [InlineKeyboardButton("Basic Digital Pack - $10", callback_data="item1")],
+            [InlineKeyboardButton("Pro Digital Pack - $25", callback_data="item2")],
             [InlineKeyboardButton("⬅ Back", callback_data="back")]
         ]
 
         await query.edit_message_text(
-            f"🍀 Weed Menu\n💰 ₾{balance:.2f}",
+            f"🍀 Digital Packs\n💰 {balance:.2f}",
             reply_markup=InlineKeyboardMarkup(keyboard)
         )
 
+    # PRODUCT MENU 2
     elif query.data == "email":
         keyboard = [
-            [InlineKeyboardButton("Item 1G", callback_data="sending")],
+            [InlineKeyboardButton("Premium Access 1 Month - $30", callback_data="item3")],
             [InlineKeyboardButton("⬅ Back", callback_data="back")]
         ]
 
         await query.edit_message_text(
-            f"💎 Menu\n💰 ₾{balance:.2f}",
+            f"💎 Premium Menu\n💰 {balance:.2f}",
             reply_markup=InlineKeyboardMarkup(keyboard)
         )
 
+    # DEPOSIT
     elif query.data == "deposit":
         await query.edit_message_text(
             f"""
 💰 Deposit
 
-Balance: ₾{balance:.2f}
+Send funds to:
+YOUR_WALLET_ADDRESS_HERE
 
-LTC Address:
-LRvMZHB6rYK2cbQWqJf2WhVgNbkUuceBDM
+Balance: ₾{balance:.2f}
 """,
             reply_markup=InlineKeyboardMarkup([
                 [InlineKeyboardButton("⬅ Back", callback_data="back")]
             ])
         )
 
+    # ITEMS (NO PURCHASE LOGIC YET)
+    elif query.data in ["item1", "item2", "item3"]:
+        await query.message.reply_text(
+            "❌ Payment system not active yet.",
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("💰 Deposit", callback_data="deposit")]
+            ])
+        )
+
+    # BACK
     elif query.data == "back":
         keyboard = [
-            [InlineKeyboardButton("🍀 Weed", callback_data="voip")],
-            [InlineKeyboardButton("💎 Drugs", callback_data="email")],
+            [InlineKeyboardButton("🍀 Digital Pack", callback_data="voip")],
+            [InlineKeyboardButton("💎 Premium Access", callback_data="email")],
             [InlineKeyboardButton("💰 Deposit", callback_data="deposit")]
         ]
 
@@ -158,19 +151,14 @@ Welcome back
 
 
 # =========================
-# SAFE RAILWAY START (FIXED)
-# =========================
-async def post_init(app):
-    # 🔥 IMPORTANT FIX FOR RAILWAY + TELEGRAM CONFLICT
-    await app.bot.delete_webhook(drop_pending_updates=True)
-
-
-# =========================
-# RUN BOT
+# MAIN (RAILWAY SAFE)
 # =========================
 if __name__ == "__main__":
 
-    app = ApplicationBuilder().token(TOKEN).post_init(post_init).build()
+    app = ApplicationBuilder().token(TOKEN).build()
+
+    # SAFE webhook cleanup
+    app.bot.delete_webhook(drop_pending_updates=True)
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("admin", admin))
