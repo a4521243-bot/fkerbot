@@ -136,7 +136,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # ================= BALANCE =================
     elif query.data == "balance":
         await msg.reply_text(
-            "💰 BALANCE: $0\n💎 SYSTEM: LTC WALLET\n\n"
+            "💰 BALANCE: ₾0\n💎 SYSTEM: LTC WALLET\n\n"
             f"👨‍💻 {ADMIN_CONTACT}",
             reply_markup=InlineKeyboardMarkup([
                 [InlineKeyboardButton("🔙 Menu", callback_data="menu")]
