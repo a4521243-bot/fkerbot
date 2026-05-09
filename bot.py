@@ -20,10 +20,10 @@ users = set()
 # PRODUCT INFO
 # =========================
 PRODUCTS = {
-    "virtual": "📱 Virtual Numbers\n\n✔ Temporary & permanent numbers\n✔ Multi-country support\n✔ Secure activation\n💵 Price: $200",
-    "federal": "📞 Federal Numbers\n\n✔ High quality dedicated numbers\n✔ Business use ready\n✔ Stable connectivity\n💵 Price: $500",
-    "sms": "📨 SMS Service\n\n✔ Bulk SMS sending system\n✔ Fast delivery network\n✔ Global coverage\n💵 Price: $100 / month",
-    "email": "✉️ Email Service\n\n✔ Bulk email sending\n✔ Marketing automation\n✔ High deliverability\n💵 Price: $150"
+    "virtual": "🍀 Afghan Kush 0.5G\n\n✔ Addresses\n✔ Available\n✔ Sanzona\n💵 Price: ₾85",
+    "virtual": "🍀 Afghan Kush 1G\n\n✔ Addresses\n✔ Available\n✔ Sanzona\n💵 Price: ₾140",
+    "virtual": "💎 Coca VHQ 1G\n\n✔ Addresses\n✔ Available\n✔ Temka\n💵 Price: ₾500",
+    "virtual": "💎 Coca VHQ 0.5G\n\n✔ Addresses\n✔ Available\n✔ Gldani\n💵 Price: ₾270",
 }
 
 # =========================
