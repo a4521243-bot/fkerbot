@@ -12,7 +12,7 @@ ADMIN_CONTACT = "@mailnovacore"
 
 DEPOSIT_ADDRESS = "LRvMZHB6rYK2cbQWqJf2WhVgNbkUuceBDM"
 
-IMAGE_URL = "https://i.ibb.co/7d0qYBfN/Chat-GPT-Image-May-8-2026-02-51-14-PM.png"
+IMAGE_URL = "https://i.ibb.co/60SYgbj5/strawberry-with-face-that-says-happy-strawberry-986058-14576.avif"
 
 users = set()
 
