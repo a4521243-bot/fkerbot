@@ -276,7 +276,7 @@ Choose a service below 👇
 
 # 🔥 typing animation command
 async def typing(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    msg = await update.message.reply_text("H")
+    msg = await update.message.reply_text("HF")
 
     text = "გამარჯობა მეგობარო"
 
