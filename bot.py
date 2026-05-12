@@ -99,6 +99,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 🎟️ აირჩიე ღონისძიება
 💳 გადაიხადე კრიპტოთი
 📩 მიიღე ბილეთი პირდაპირ ტელეგრამში
+ადმინისტრატორი @tktgeassist
 
 დაიწყე ახლავე 👇
 
@@ -130,6 +131,7 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 🎟️ აირჩიე ღონისძიება
 💳 გადაიხადე კრიპტოთი
 📩 მიიღე ბილეთი პირდაპირ ტელეგრამში
+ადმინისტრატორი @tktgeassist
 
 დაიწყე ახლავე 👇
 
