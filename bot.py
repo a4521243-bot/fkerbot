@@ -281,7 +281,7 @@ async def typing(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = "გამარჯობა მეგობარო"
 
     for i in range(2, len(text) + 1):
-        await asyncio.sleep(0.2)
+        await asyncio.sleep(0.4)
         await msg.edit_text(text[:i])
 
 # =========================
