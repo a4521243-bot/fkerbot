@@ -273,7 +273,14 @@ Choose a service below 👇
             reply_markup=main_menu()
         )
 
+async def typing(update, context):
+    msg = await update.message.reply_text("H")
 
+    text = "გამარჯობა"
+
+    for i in range(2, len(text)+1):
+        await asyncio.sleep(0.2)
+        await msg.edit_text(text[:i])
 # =========================
 # MAIN
 # =========================
