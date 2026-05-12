@@ -282,7 +282,7 @@ def main():
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(menu))
-
+app.add_handler(CommandHandler("typing", typing))
     app.run_polling()
 
 
