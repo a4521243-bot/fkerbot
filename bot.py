@@ -22,17 +22,17 @@ products = {
         "description":"Available: 🇺🇸🇨🇦🇩🇪\n🏢Federal Numbers: ✅"
     },
     "tool": {
-        "name": "YE LIVE DINAMO/KAYNE WEST",
+        "name": "YE LIVE DINAMO/KANYE WEST",
         "price": 250, 
         "description":"სთეიჯი: Orbit - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
     },
     "olst": {
-        "name": "YE LIVE DINAMO/KAYNE WEST",
+        "name": "YE LIVE DINAMO/KANYE WEST",
         "price":500,
         "description":"სთეიჯი: Star Ring - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
     },
     "tlst": {
-        "name": "YE LIVE DINAMO/KAYNE WEST",
+        "name": "YE LIVE DINAMO/KANYE WEST",
         "price":1500,
         "description":"სთეიჯი: VIP - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
     },
