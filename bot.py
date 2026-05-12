@@ -155,7 +155,7 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # BALANCE
     elif data == "balance":
         await query.edit_message_text(
-            f"💰 ბალანსი: ${balances[user_id]}",
+            f"💰 ბალანსი: ₾{balances[user_id]}",
             reply_markup=main_menu()
         )
 
