@@ -1,5 +1,5 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
+from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes import asyncio
 import os
 
 TOKEN = os.getenv("BOT_TOKEN")
@@ -273,6 +273,15 @@ Choose a service below 👇
             reply_markup=main_menu()
         )
 
+# 🔥 typing animation command
+async def typing(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    msg = await update.message.reply_text("H")
+
+    text = "გამარჯობა მეგობარო"
+
+    for i in range(2, len(text) + 1):
+        await asyncio.sleep(0.2)
+        await msg.edit_text(text[:i])
 
 # =========================
 # MAIN
@@ -281,6 +290,8 @@ def main():
     app = Application.builder().token(TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("typing", typing))
+
     app.add_handler(CallbackQueryHandler(menu))
 
     app.run_polling()
