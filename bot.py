@@ -24,17 +24,17 @@ products = {
     "tool": {
         "name": "YE LIVE DINAMO/KAYNE WEST",
         "price": 250, 
-        "description":"Stage: Orbit - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
+        "description":"სთეიჯი: Orbit - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
     },
     "olst": {
         "name": "YE LIVE DINAMO/KAYNE WEST",
         "price":500,
-        "description":"Stage: Star Ring - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
+        "description":"სთეიჯი: Star Ring - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
     },
     "tlst": {
         "name": "YE LIVE DINAMO/KAYNE WEST",
         "price":1500,
-        "description":"Stage: VIP - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
+        "description":"სთეიჯი: VIP - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
     },
     "crc": {
         "name": "💳Usable credit cards",
@@ -142,11 +142,9 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif data == "shop":
         await query.edit_message_text(
     """
-    🛒 <b>მაღაზიის მენიუ</b> 🛒
+    🛒 <b>ვიტრინა</b>
     
-🫶 Support: @tktgesupport
-
-აირჩიე სასურველი ბილეთი 👇
+აირჩიე სასურველი 👇
 """,
     parse_mode="HTML",
     reply_markup=shop_menu()
@@ -186,7 +184,7 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         keys = ["tool", "olst", "tlst"]
         await query.edit_message_text(
     """
-👤 <b>ბილეთები</b> 👤
+🎟️ <b>ბილეთები</b> 🎟️
 
 აირჩიე სასურველი 👇
 """,
