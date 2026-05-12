@@ -72,7 +72,7 @@ def product_menu(keys, back="shop"):
     for k in keys:
         p = products[k]
         # Show description if available
-        text = f"{p['name']} - ${p['price']}"
+        text = f"{p['name']} - ₾{p['price']}"
         if "description" in p:
             text += f"\n{p['description']}"
         keyboard.append([InlineKeyboardButton(text, callback_data=f"buy_{k}")])
