@@ -24,17 +24,17 @@ products = {
     "tool": {
         "name": "YE LIVE DINAMO/KAYNE WEST",
         "price": 250, 
-        "description":"Stage: Orbit - ხელმისაწვდომია✅"
+        "description":"Stage: Orbit - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
     },
     "olst": {
         "name": "YE LIVE DINAMO/KAYNE WEST",
         "price":500,
-        "description":"Stage: Star Ring - ხელმისაწვდომია✅"
+        "description":"Stage: Star Ring - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
     },
     "tlst": {
         "name": "YE LIVE DINAMO/KAYNE WEST",
         "price":1500,
-        "description":"Stage: VIP - ხელმისაწვდომია✅"
+        "description":"Stage: VIP - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
     },
     "crc": {
         "name": "💳Usable credit cards",
@@ -188,8 +188,6 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
 👤 <b>ბილეთები</b> 👤
 
-🫶 Support: @luxchainsupport
-
 აირჩიე სასურველი 👇
 """,
     parse_mode="HTML",
@@ -247,8 +245,8 @@ Choose a service below 👇
             await query.edit_message_text(
                 f"{item['name']}\n"
                 f"{item['description']}\n"
-                f"💵ფასი : {item['price']}$\n"
-                f"💰ბალანსი : {balances[user_id]}$",
+                f"💵ფასი : {item['price']}₾\n"
+                f"💰ბალანსი : {balances[user_id]}₾",
                 reply_markup=InlineKeyboardMarkup([
                     [InlineKeyboardButton("✅ შეძენა", callback_data="deposit")],
                     [InlineKeyboardButton("🔙 უკან", callback_data="shop")]
@@ -267,7 +265,7 @@ Choose a service below 👇
     # ADMIN
     elif data == "admin":
         if user_id != ADMIN_ID:
-            await query.answer("No access ❌", show_alert=True)
+            await query.answer("არხარ ადმინისტრატორი ❌", show_alert=True)
             return
 
         await query.edit_message_text(
