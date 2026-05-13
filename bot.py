@@ -190,7 +190,6 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             ])
         )
         
-    # DEPOSIT
 # DEPOSIT
 elif data == "deposit":
 
@@ -209,7 +208,6 @@ elif data == "deposit":
 
 ⚡ გადახდის შემდეგ, ბალანსი ავტომატურად განახლდება.
 🔒 უსაფრთხო ბლოკჩეინ ტრანზაქცია
-
 """,
         parse_mode="HTML",
         reply_markup=InlineKeyboardMarkup([
