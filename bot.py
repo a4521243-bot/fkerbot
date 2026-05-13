@@ -17,14 +17,19 @@ BTC_WALLET = "17hQJ4sGmt4yMniMfAfjEgRvAPPCnycfdc"
 # =========================
 products = {
 # ALLPRODUCTS
-    "vip": {
-        "name": "☎️Unlimited Voip Calling/Monthly",
-        "price": 500,
-        "description":"Available: 🇺🇸🇨🇦🇩🇪\n🏢Federal Numbers: ✅"
+    "tier1": {
+        "name": "YE LIVE DINAMO/KANYE WEST",
+        "price": 270,
+        "description":"სთეიჯი: Tier#1 - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
+    },
+        "tier2": {
+        "name": "YE LIVE DINAMO/KANYE WEST",
+        "price": 320,
+        "description":"სთეიჯი: Tier#2 - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
     },
     "tool": {
         "name": "YE LIVE DINAMO/KANYE WEST",
-        "price": 250, 
+        "price": 450, 
         "description":"სთეიჯი: Orbit - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
     },
     "olst": {
@@ -184,7 +189,7 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # CATEGORIES
     elif data == "leads":
-        keys = ["tool", "olst", "tlst"]
+        keys = ["tier1", "tier2", "tool", "olst", "tlst"]
         await query.edit_message_text(
     """
 🎟️ <b>ბილეთები</b> 🎟️
@@ -276,12 +281,12 @@ Choose a service below 👇
 
 async def typing(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
-    text = "მალე ახალი ბილეთები"
+    text = "იჩქარეთ"
 
     # GIF გაგზავნა
     msg = await context.bot.send_animation(
         chat_id=update.effective_chat.id,
-        animation="https://media.tenor.com/pc3HsRRvEsEAAAAM/dance.gif",
+        animation="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDlrZGpsZ3Y3ajBwcHF2bW5la2d5ZWRsdG0yeDI0aGpya2tlejFoeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Zsoh7a4EhmJh33QMoX/giphy.gif",
         caption="."
     )
 
