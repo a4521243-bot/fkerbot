@@ -191,10 +191,11 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         
     # DEPOSIT
-    elif data == "deposit":
-        
-        qr_link = f"https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={BTC_WALLET}"
-        
+# DEPOSIT
+elif data == "deposit":
+
+    qr_link = f"https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={BTC_WALLET}"
+
     await query.message.reply_photo(
         photo=qr_link,
         caption=f"""
@@ -210,12 +211,11 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 🔒 უსაფრთხო ბლოკჩეინ ტრანზაქცია
 
 """,
-    parse_mode="HTML",
-    reply_markup=InlineKeyboardMarkup([
-        [InlineKeyboardButton("🔙 Back", callback_data="back")]
-    ])
-)
-
+        parse_mode="HTML",
+        reply_markup=InlineKeyboardMarkup([
+            [InlineKeyboardButton("🔙 Back", callback_data="back")]
+        ])
+    )
     # CATEGORIES
     elif data == "leads":
         keys = ["tier2", "tier1", "tool", "tlst"]
