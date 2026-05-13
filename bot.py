@@ -274,29 +274,28 @@ Choose a service below 👇
             reply_markup=main_menu()
         )
 
-# 🔥 typing animation command
 async def typing(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    msg = await update.message.reply_text("H")
 
     text = "გამარჯობა მეგობარო"
 
-    # GIF იგზავნება caption-ით
-msg = await bot.send_animation(
-    chat_id,
-    "https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUyaXQ2Z29nNm1xYzlhM252MWlubnhpZWhlOXZ4MXZ0c2xrdjNoN3NlcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Tx2YBHWSH1Ef1Xo7ME/giphy.gif",
-    caption="."
-)
+    # GIF გაგზავნა
+    msg = await context.bot.send_animation(
+        chat_id=update.effective_chat.id,
+        animation="https://media.tenor.com/pc3HsRRvEsEAAAAM/dance.gif",
+        caption="."
+    )
 
-# caption-ის რედაქტირება
-for i in range(2, len(text) + 1):
-    await asyncio.sleep(0.4)
+    # caption-ის ეტაპობრივი რედაქტირება
+    for i in range(1, len(text) + 1):
+        await asyncio.sleep(0.4)
 
-    try:
-        await msg.edit_caption(
-            caption=text[:i]
-        )
-    except Exception as e:
-        print(e)
+        try:
+            await msg.edit_caption(
+                caption=text[:i]
+            )
+        except Exception as e:
+            print(e)
+
 # MAIN
 # =========================
 def main():
