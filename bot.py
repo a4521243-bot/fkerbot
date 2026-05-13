@@ -147,32 +147,32 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # BACK
     if data == "back":
         await query.edit_message_text(
-            """
-🏠 <b>მთავარი მენიუ</b> 🏠
-
+    """
+     🏠 <b>მთავარი მენიუ</b> 🏠
+     
 🎟️ აირჩიე ღონისძიება
 💳 გადაიხადე კრიპტოთი
 📩 მიიღე ბილეთი პირდაპირ ტელეგრამში
-
 ადმინისტრატორი @tktgeassist
 
 დაიწყე ახლავე 👇
+
 """,
-            parse_mode="HTML",
-            reply_markup=main_menu()
-        )
+    parse_mode="HTML",
+    reply_markup=main_menu()
+)
 
     # SHOP
     elif data == "shop":
         await query.edit_message_text(
-            """
-🛒 <b>ვიტრინა</b>
-
+    """
+    🛒 <b>ვიტრინა</b>
+    
 აირჩიე სასურველი 👇
 """,
-            parse_mode="HTML",
-            reply_markup=shop_menu()
-        )
+    parse_mode="HTML",
+    reply_markup=shop_menu()
+)
 
     # BALANCE
     elif data == "balance":
@@ -181,7 +181,7 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             reply_markup=main_menu()
         )
 
-    # MY TICKETS
+        # MY TICKETS
     elif data == "mytickets":
         await query.edit_message_text(
             "🎫 თქვენ არ გაქვთ შეძენილი ბილეთები ❌",
@@ -189,15 +189,11 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 [InlineKeyboardButton("🔙 უკან", callback_data="back")]
             ])
         )
-
+        
     # DEPOSIT
     elif data == "deposit":
-
-        qr_link = f"https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={BTC_WALLET}"
-
-        await query.message.reply_photo(
-            photo=qr_link,
-            caption=f"""
+        await query.edit_message_text(
+    f"""
 ❌ <b>არასაკმარისი ბალანსი</b>
 
 💰 <b>საჭიროა შევსება</b>
@@ -208,69 +204,103 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 ⚡ გადახდის შემდეგ, ბალანსი ავტომატურად განახლდება.
 🔒 უსაფრთხო ბლოკჩეინ ტრანზაქცია
+
 """,
-            parse_mode="HTML",
-            reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton("🔙 Back", callback_data="back")]
-            ])
-        )
+    parse_mode="HTML",
+    reply_markup=InlineKeyboardMarkup([
+        [InlineKeyboardButton("🔙 Back", callback_data="back")]
+    ])
+)
 
     # CATEGORIES
     elif data == "leads":
         keys = ["tier2", "tier1", "tool", "tlst"]
-
         await query.edit_message_text(
-            """
+    """
 🎟️ <b>ბილეთები</b> 🎟️
 
 აირჩიე სასურველი 👇
 """,
-            parse_mode="HTML",
-            reply_markup=product_menu(keys)
-        )
+    parse_mode="HTML",
+    reply_markup=product_menu(keys)
+)
+
+    elif data == "cards":
+        keys = ["crc", "trc"]
+        await query.edit_message_text(
+    """
+💳 <b>Credit Cards</b> 💳
+
+🫶 Support: @luxchainsupport
+
+Choose your tour below 👇
+""",
+    parse_mode="HTML",
+    reply_markup=product_menu(keys)
+)
+
+    elif data == "events":
+        keys = ["cannes", "monaco_f1"]
+        await query.edit_message_text(
+    """
+🎫 <b>Exclusive Events</b> 🎫
+
+🫶 Support: @luxchainsupport
+
+Choose your event below 👇
+""",
+    parse_mode="HTML",
+    reply_markup=product_menu(keys)
+)
+
+    elif data == "voip":
+        keys = ["vip", "tool"]
+        await query.edit_message_text(
+    """
+💻 <b>Elite Services</b> 💻
+
+🫶 Support: @luxchainsupport
+
+Choose a service below 👇
+""",
+    parse_mode="HTML",
+    reply_markup=product_menu(keys)
+)
 
     # BUY
     elif data.startswith("buy_"):
-
         key = data.replace("buy_", "")
-        item = products.get(key)
-
-        if not item:
-            await query.answer("პროდუქტი ვერ მოიძებნა ❌", show_alert=True)
-            return
+        item = products[key]
 
         if balances[user_id] < item["price"]:
-
             await query.edit_message_text(
                 f"{item['name']}\n"
-                f"{item['description']}\n\n"
-                f"💵 ფასი: ₾{item['price']}\n"
-                f"💰 ბალანსი: ₾{balances[user_id]}",
+                f"{item['description']}\n"
+                f"💵ფასი : {item['price']}₾\n"
+                f"💰ბალანსი : {balances[user_id]}₾",
                 reply_markup=InlineKeyboardMarkup([
-                    [InlineKeyboardButton("💳 შევსება", callback_data="deposit")],
+                    [InlineKeyboardButton("✅ შეძენა", callback_data="deposit")],
                     [InlineKeyboardButton("🔙 უკან", callback_data="shop")]
                 ])
             )
-
             return
 
         balances[user_id] -= item["price"]
 
         await query.edit_message_text(
-            f"✅ Purchased: {item['name']}\n"
-            f"💰 Remaining Balance: ₾{balances[user_id]}",
+            f"✅ Bought: {item['name']}\n"
+            f"Remaining: ${balances[user_id]}",
             reply_markup=main_menu()
         )
 
     # ADMIN
     elif data == "admin":
-
         if user_id != ADMIN_ID:
             await query.answer("არხარ ადმინისტრატორი ❌", show_alert=True)
             return
 
         await query.edit_message_text(
-            f"🔐 Admin Panel\n\n👥 Users: {len(users)}\n🛒 Products: {len(products)}",
+            f"🔐 Admin panel\nUsers: {len(users)}\nProducts: {len(products)}",
             reply_markup=main_menu()
         )
         
