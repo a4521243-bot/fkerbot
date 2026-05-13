@@ -191,13 +191,13 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         
 # DEPOSIT
-    elif data == "deposit":
+elif data == "deposit":
 
     qr_link = f"https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={BTC_WALLET}"
 
-        await query.message.reply_photo(
-            photo=qr_link,
-            caption=f"""
+    await query.message.reply_photo(
+        photo=qr_link,
+        caption=f"""
 ❌ <b>არასაკმარისი ბალანსი</b>
 
 💰 <b>საჭიროა შევსება</b>
