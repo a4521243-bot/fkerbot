@@ -29,13 +29,8 @@ products = {
     },
     "tool": {
         "name": "YE LIVE DINAMO/KANYE WEST",
-        "price": 450, 
+        "price": 500, 
         "description":"სთეიჯი: Orbit - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
-    },
-    "olst": {
-        "name": "YE LIVE DINAMO/KANYE WEST",
-        "price":500,
-        "description":"სთეიჯი: Star Ring - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
     },
     "tlst": {
         "name": "YE LIVE DINAMO/KANYE WEST",
@@ -189,7 +184,7 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # CATEGORIES
     elif data == "leads":
-        keys = ["tier2", "tier1", "tool", "olst", "tlst"]
+        keys = ["tier2", "tier1", "tool", "tlst"]
         await query.edit_message_text(
     """
 🎟️ <b>ბილეთები</b> 🎟️
