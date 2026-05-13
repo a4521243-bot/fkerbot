@@ -20,12 +20,12 @@ products = {
     "tier2": {
         "name": "YE LIVE DINAMO/KANYE WEST",
         "price": 270,
-        "description":"სთეიჯი: Tier#1 - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
+        "description":"სთეიჯი: Tier#2 - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
     },
         "tier1": {
         "name": "YE LIVE DINAMO/KANYE WEST",
         "price": 320,
-        "description":"სთეიჯი: Tier#2 - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
+        "description":"სთეიჯი: Tier#1 - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
     },
     "tool": {
         "name": "YE LIVE DINAMO/KANYE WEST",
