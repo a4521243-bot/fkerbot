@@ -90,12 +90,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if user_id not in balances:
         balances[user_id] = 0
 
-    text = "იჩქარეთ 🔥"
+    text = "შეინახეთ ბოტი 🎟️🔥"
 
     # GIF გაგზავნა
     msg = await context.bot.send_animation(
         chat_id=update.effective_chat.id,
-        animation="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDlrZGpsZ3Y3ajBwcHF2bW5la2d5ZWRsdG0yeDI0aGpya2tlejFoeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Zsoh7a4EhmJh33QMoX/giphy.gif",
+        animation="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHAzaDVibjFuemlwcW45N29nZGxsNXE2eGhtN3c0ZjVjemZkcDJyYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8GjxwxtZWS29xlJnUH/giphy.gif",
         caption="."
     )
 
