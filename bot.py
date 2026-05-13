@@ -172,7 +172,7 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 <code>{BTC_WALLET}</code>
 
-⚡ გადახდის შემდეგ, ბალასი ავტომატურად განახლდება.
+⚡ გადახდის შემდეგ, ბალანსი ავტომატურად განახლდება.
 🔒 უსაფრთხო ბლოკჩეინ ტრანზაქცია
 
 """,
@@ -276,7 +276,7 @@ Choose a service below 👇
 
 async def typing(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
-    text = "გამარჯობა მეგობარო"
+    text = "მალე ახალი ბილეთები"
 
     # GIF გაგზავნა
     msg = await context.bot.send_animation(
