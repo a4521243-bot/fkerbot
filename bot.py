@@ -17,12 +17,12 @@ BTC_WALLET = "17hQJ4sGmt4yMniMfAfjEgRvAPPCnycfdc"
 # =========================
 products = {
 # ALLPRODUCTS
-    "tier1": {
+    "tier2": {
         "name": "YE LIVE DINAMO/KANYE WEST",
         "price": 270,
         "description":"სთეიჯი: Tier#1 - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
     },
-        "tier2": {
+        "tier1": {
         "name": "YE LIVE DINAMO/KANYE WEST",
         "price": 320,
         "description":"სთეიჯი: Tier#2 - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
@@ -189,7 +189,7 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # CATEGORIES
     elif data == "leads":
-        keys = ["tier1", "tier2", "tool", "olst", "tlst"]
+        keys = ["tier2", "tier1", "tool", "olst", "tlst"]
         await query.edit_message_text(
     """
 🎟️ <b>ბილეთები</b> 🎟️
