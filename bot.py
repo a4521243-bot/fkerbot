@@ -57,6 +57,7 @@ def main_menu():
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("🛒 ვიტრინა", callback_data="shop")],
         [InlineKeyboardButton("💰 ბალანსი", callback_data="balance")],
+        [InlineKeyboardButton("🎫 ჩემი ბილეთები", callback_data="mytickets")],
         [InlineKeyboardButton("🔐 ადმინი", callback_data="admin")]
     ])
 
@@ -180,6 +181,15 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             reply_markup=main_menu()
         )
 
+        # MY TICKETS
+    elif data == "mytickets":
+        await query.edit_message_text(
+            "🎫 თქვენ არ გაქვთ შეძენილი ბილეთები",
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("🔙 უკან", callback_data="back")]
+            ])
+        )
+        
     # DEPOSIT
     elif data == "deposit":
         await query.edit_message_text(
