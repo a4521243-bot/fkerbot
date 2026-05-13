@@ -184,7 +184,7 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # MY TICKETS
     elif data == "mytickets":
         await query.edit_message_text(
-            "🎫 თქვენ არ გაქვთ შეძენილი ბილეთები",
+            "🎫 თქვენ არ გაქვთ შეძენილი ბილეთები ❌",
             reply_markup=InlineKeyboardMarkup([
                 [InlineKeyboardButton("🔙 უკან", callback_data="back")]
             ])
