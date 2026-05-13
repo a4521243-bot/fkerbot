@@ -80,7 +80,6 @@ def product_menu(keys, back="shop"):
     keyboard.append([InlineKeyboardButton("🔙 Back", callback_data=back)])
     return InlineKeyboardMarkup(keyboard)
 
-
 # =========================
 # START
 # =========================
@@ -91,8 +90,30 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if user_id not in balances:
         balances[user_id] = 0
 
-    await update.message.reply_text(
-        f"""
+    text = "იჩქარეთ 🔥"
+
+    # GIF გაგზავნა
+    msg = await context.bot.send_animation(
+        chat_id=update.effective_chat.id,
+        animation="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDlrZGpsZ3Y3ajBwcHF2bW5la2d5ZWRsdG0yeDI0aGpya2tlejFoeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Zsoh7a4EhmJh33QMoX/giphy.gif",
+        caption="."
+    )
+
+    # ანიმაციური ტექსტი
+    for i in range(1, len(text) + 1):
+        await asyncio.sleep(0.3)
+
+        try:
+            await msg.edit_caption(
+                caption=text[:i]
+            )
+        except:
+            pass
+
+    # მთავარი მესიჯი
+    await context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text="""
 👋 ჰეი, კეთილი იყოს თქვენი მობრძანება!
 
 აქ შეგიძლია სწრაფად და უსაფრთხოდ შეიძინო ბილეთები 🎉
@@ -100,15 +121,14 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 🎟️ აირჩიე ღონისძიება
 💳 გადაიხადე კრიპტოთი
 📩 მიიღე ბილეთი პირდაპირ ტელეგრამში
+
 ადმინისტრატორი @tktgeassist
 
 დაიწყე ახლავე 👇
-
-    """,
+""",
         parse_mode="HTML",
         reply_markup=main_menu()
     )
-
 
 # =========================
 # CALLBACK (SIMPLE ROUTER)
@@ -273,37 +293,13 @@ Choose a service below 👇
             f"🔐 Admin panel\nUsers: {len(users)}\nProducts: {len(products)}",
             reply_markup=main_menu()
         )
-
-async def typing(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
-    text = "იჩქარეთ"
-
-    # GIF გაგზავნა
-    msg = await context.bot.send_animation(
-        chat_id=update.effective_chat.id,
-        animation="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDlrZGpsZ3Y3ajBwcHF2bW5la2d5ZWRsdG0yeDI0aGpya2tlejFoeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Zsoh7a4EhmJh33QMoX/giphy.gif",
-        caption="."
-    )
-
-    # caption-ის ეტაპობრივი რედაქტირება
-    for i in range(1, len(text) + 1):
-        await asyncio.sleep(0.4)
-
-        try:
-            await msg.edit_caption(
-                caption=text[:i]
-            )
-        except Exception as e:
-            print(e)
-
+        
 # MAIN
 # =========================
 def main():
     app = Application.builder().token(TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
-    app.add_handler(CommandHandler("typing", typing))
-
     app.add_handler(CallbackQueryHandler(menu))
 
     app.run_polling()
