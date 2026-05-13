@@ -9,7 +9,7 @@ ADMIN_ID = 8721950488
 users = set()
 balances = {}
 
-BTC_WALLET = "17hQJ4sGmt4yMniMfAfjEgRvAPPCnycfdc"
+BTC_WALLET = "1PNRb6zsiyPc3oRjZuPWLqQSKptXkXWhiB"
 
 
 # =========================
