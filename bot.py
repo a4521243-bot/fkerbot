@@ -102,7 +102,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # ანიმაციური ტექსტი
     for i in range(1, len(text) + 1):
-        await asyncio.sleep(0.3)
+        await asyncio.sleep(0.2)
 
         try:
             await msg.edit_caption(
