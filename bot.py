@@ -175,21 +175,21 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 )
 
     # BALANCE
-    elif data == "balance":
-        await query.edit_message_text(
-            f"💰 ბალანსი: ₾{balances[user_id]}",
-            reply_markup=main_menu()
-        )
+elif data == "balance":
+    await query.edit_message_text(
+        f"💰 ბალანსი: ₾{balances[user_id]}",
+        reply_markup=main_menu()
+    )
 
-        # MY TICKETS
-    elif data == "mytickets":
-        await query.edit_message_text(
-            "🎫 თქვენ არ გაქვთ შეძენილი ბილეთები ❌",
-            reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton("🔙 უკან", callback_data="back")]
-            ])
-        )
-        
+# MY TICKETS
+elif data == "mytickets":
+    await query.edit_message_text(
+        "🎫 თქვენ არ გაქვთ შეძენილი ბილეთები ❌",
+        reply_markup=InlineKeyboardMarkup([
+            [InlineKeyboardButton("🔙 უკან", callback_data="back")]
+        ])
+    )
+
 # DEPOSIT
 elif data == "deposit":
 
@@ -214,8 +214,9 @@ elif data == "deposit":
             [InlineKeyboardButton("🔙 Back", callback_data="back")]
         ])
     )
-    # CATEGORIES
-    elif data == "leads":
+
+# CATEGORIES
+elif data == "leads":
         keys = ["tier2", "tier1", "tool", "tlst"]
         await query.edit_message_text(
     """
