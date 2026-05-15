@@ -96,7 +96,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # GIF გაგზავნა
     msg = await context.bot.send_animation(
         chat_id=update.effective_chat.id,
-        animation="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTVhanh4MDlneng0cGlmbWJsaWlxdXZheGl2a2FvMWpxNmdyZWdsYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MD3VFsgFLey4f6lnyK/giphy.gif",
+        animation="https://media1.tenor.com/m/DNLazArEzGAAAAAd/722-sold-out.gif",
         caption="."
     )
 
