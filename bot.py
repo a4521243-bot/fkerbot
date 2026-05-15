@@ -96,7 +96,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # GIF გაგზავნა
     msg = await context.bot.send_animation(
         chat_id=update.effective_chat.id,
-        animation="https://media1.tenor.com/m/DNLazArEzGAAAAAd/722-sold-out.gif",
+        animation="https://c.tenor.com/DNLazArEzGAAAAAd/tenor.gif",
         caption="."
     )
 
