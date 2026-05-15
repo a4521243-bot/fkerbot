@@ -65,7 +65,7 @@ def main_menu():
 def shop_menu():
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("🎟️ ბილეთები", callback_data="leads")],
-        [InlineKeyboardButton("🔙 Back", callback_data="back")]
+        [InlineKeyboardButton("🔙 უკან", callback_data="back")]
     ])
 
 
@@ -78,7 +78,7 @@ def product_menu(keys, back="shop"):
         if "description" in p:
             text += f"\n{p['description']}"
         keyboard.append([InlineKeyboardButton(text, callback_data=f"buy_{k}")])
-    keyboard.append([InlineKeyboardButton("🔙 Back", callback_data=back)])
+    keyboard.append([InlineKeyboardButton("🔙 უკან", callback_data=back)])
     return InlineKeyboardMarkup(keyboard)
 
 # =========================
@@ -211,7 +211,7 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 """,
     parse_mode="HTML",
     reply_markup=InlineKeyboardMarkup([
-        [InlineKeyboardButton("🔙 Back", callback_data="back")]
+        [InlineKeyboardButton("🔙 უკან", callback_data="back")]
     ])
 )
 
