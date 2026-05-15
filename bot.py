@@ -20,22 +20,22 @@ products = {
     "tier2": {
         "name": "YE LIVE DINAMO/KANYE WEST",
         "price": 270,
-        "description":"სთეიჯი: Tier#2 - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
+        "description":"სთეიჯი: Tier#2 - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026\n📦მარაგი: 20+"
     },
         "tier1": {
         "name": "YE LIVE DINAMO/KANYE WEST",
         "price": 320,
-        "description":"სთეიჯი: Tier#1 - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
+        "description":"სთეიჯი: Tier#1 - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026\n📦მარაგი: 15+"
     },
     "tool": {
         "name": "YE LIVE DINAMO/KANYE WEST",
         "price": 500, 
-        "description":"სთეიჯი: Orbit - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
+        "description":"სთეიჯი: Orbit - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026\n📦მარაგი: 15+"
     },
     "tlst": {
         "name": "YE LIVE DINAMO/KANYE WEST",
         "price":1500,
-        "description":"სთეიჯი: VIP - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026"
+        "description":"სთეიჯი: VIP - ხელმისაწვდომია✅\n📅თარიღი: 12 ივნისი, 2026\n📦მარაგი: 10+"
     },
     "crc": {
         "name": "💳Usable credit cards",
