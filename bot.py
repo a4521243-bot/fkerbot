@@ -96,18 +96,18 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if user_id not in balances:
         balances[user_id] = 0
 
-    text = "იჩქარეთ 🎟️🔥"
+    text = "იჩქარეთ ბილეთების შეძენა 🎟️🔥"
 
     # GIF გაგზავნა
     msg = await context.bot.send_animation(
         chat_id=update.effective_chat.id,
-        animation="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExczJlOXJqY2VtYWdtcWQxMG5wNG5lZGs3cnh1ZTQzdjg3N2V0eWt1dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Tx2YBHWSH1Ef1Xo7ME/giphy.gif",
+        animation="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWF5cjkyYWdnaWd5MDRndDNseXFja2hxeHl6aDRodmR6ZXRpNXgwZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BUVb1VXHfPgwWIdSd7/giphy.gif",
         caption=".",
     )
 
     # ანიმაციური ტექსტი
     for i in range(1, len(text) + 1):
-        await asyncio.sleep(0.2)
+        await asyncio.sleep(0.6)
 
         try:
             await msg.edit_caption(caption=text[:i])
@@ -119,7 +119,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         chat_id=update.effective_chat.id,
         text="""
 👋 ჰეი, კეთილი იყოს თქვენი მობრძანება!
-
+ჩვენ შევიძინეთ ბილეთების დიდი რაოდენობა რადგან
+თავის ფასში მოგყიდოთ კრიპტოვალუტის მეშვეობით!
 აქ შეგიძლია სწრაფად და უსაფრთხოდ შეიძინო ბილეთები 🎉
 
 🎟️ აირჩიე ღონისძიება
