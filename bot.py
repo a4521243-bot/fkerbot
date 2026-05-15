@@ -57,7 +57,7 @@ def main_menu():
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("🛒 ვიტრინა", callback_data="shop")],
         [InlineKeyboardButton("💰 ბალანსი", callback_data="balance")],
-        [InlineKeyboardButton("🎫 ჩემი ბილეთები", callback_data="mytickets")],
+        [InlineKeyboardButton("🎫 შესყიდვები", callback_data="mytickets")],
         [InlineKeyboardButton("🔐 ადმინი", callback_data="admin")]
     ])
 
@@ -150,7 +150,9 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.edit_message_text(
     """
      🏠 <b>მთავარი მენიუ</b> 🏠
-     
+არ ვართ დაკავშირებული TKT.GE სთან
+ჩვენ ვიყიდეთ ბილეთების უმეტესობა,
+და ვყიდით კრიპტოვალუტაში !
 🎟️ აირჩიე ღონისძიება
 💳 გადაიხადე კრიპტოთი
 📩 მიიღე ბილეთი პირდაპირ ტელეგრამში
