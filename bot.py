@@ -185,30 +185,31 @@ elif data == "shop":
         parse_mode="HTML",
         reply_markup=shop_menu(),
     )
-    
+# BALANCE
 
-    # BALANCE
-    elif data == "balance":
-        await query.edit_message_text(
-            f"💰 ბალანსი: ₾{balances[user_id]}", reply_markup=main_menu()
-        )
+elif data == "balance":
+    await query.edit_message_text(
+        f"💰 ბალანსი: ₾{balances[user_id]}",
+        reply_markup=main_menu(),
+    )
+# MY TICKETS
 
-        # MY TICKETS
-    elif data == "mytickets":
-        await query.edit_message_text(
-            "🎫 თქვენ არ გაქვთ შეძენილი ბილეთები ❌",
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("🔙 უკან", callback_data="back")]]
-            ),
-        )
-        # Deposit
-    elif data == "deposit":
-        
-        await query.message.delete()
-        
-        photo_url = "https://i.ibb.co/HfMcFZJ0/4935.jpg"  # შენი სურათის ლინკი
+elif data == "mytickets":
+    await query.edit_message_text(
+        "🎫 თქვენ არ გაქვთ შეძენილი ბილეთები ❌",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("🔙 უკან", callback_data="back")]]
+        ),
+    )
+# DEPOSIT
 
-        text = f"""
+elif data == "deposit":
+
+    await query.message.delete()
+
+    photo_url = "https://i.ibb.co/HfMcFZJ0/4935.jpg"
+
+    text = f"""
 ❌ <b>არასაკმარისი ბალანსი</b>
 
 💰 <b>საჭიროა შევსება</b>
@@ -221,15 +222,16 @@ elif data == "shop":
 🔒 უსაფრთხო ბლოკჩეინ ტრანზაქცია
 """
 
-        await context.bot.send_photo(
-            chat_id=query.message.chat_id,
-            photo=photo_url,
-            caption=text,
-            parse_mode="HTML",
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("🔙 უკან", callback_data="back")]]
-            ),
-        )
+    await context.bot.send_photo(
+        chat_id=query.message.chat_id,
+        photo=photo_url,
+        caption=text,
+        parse_mode="HTML",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("🔙 უკან", callback_data="back")]]
+        ),
+    )
+
     # CATEGORIES
     elif data == "leads":
         keys = ["tier2", "tier1", "tool", "tlst"]
