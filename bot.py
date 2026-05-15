@@ -96,7 +96,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if user_id not in balances:
         balances[user_id] = 0
 
-    text = "იჩქარეთ ბილეთების შეძენა 🎟️🔥"
+    text = "იჩქარეთ 🎟️🔥"
 
     # GIF გაგზავნა
     msg = await context.bot.send_animation(
@@ -107,7 +107,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # ანიმაციური ტექსტი
     for i in range(1, len(text) + 1):
-        await asyncio.sleep(0.6)
+        await asyncio.sleep(0.2)
 
         try:
             await msg.edit_caption(caption=text[:i])
@@ -150,9 +150,18 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         balances[user_id] = 0
 
     # BACK
-    if data == "back":
-        await query.edit_message_text(
-            """
+
+
+if data == "back":
+
+    try:
+        await query.message.delete()
+    except:
+        pass
+
+    await context.bot.send_message(
+        chat_id=query.message.chat_id,
+        text="""
      🏠 <b>მთავარი მენიუ</b> 🏠
      
 🎟️ აირჩიე ღონისძიება
@@ -163,9 +172,10 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 დაიწყე ახლავე 👇
 
 """,
-            parse_mode="HTML",
-            reply_markup=main_menu(),
-        )
+        parse_mode="HTML",
+        reply_markup=main_menu(),
+    )
+
 
     # SHOP
     elif data == "shop":
@@ -195,7 +205,9 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         # Deposit
     elif data == "deposit":
-
+        
+        await query.message.delete()
+        
         photo_url = "https://i.ibb.co/HfMcFZJ0/4935.jpg"  # შენი სურათის ლინკი
 
         text = f"""
@@ -217,7 +229,7 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             caption=text,
             parse_mode="HTML",
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("🔙 Back", callback_data="back")]]
+                [[InlineKeyboardButton("🔙 უკან", callback_data="back")]]
             ),
         )
     # CATEGORIES
