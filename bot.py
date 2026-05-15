@@ -149,8 +149,7 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if user_id not in balances:
         balances[user_id] = 0
 
-    # BACK
-
+# BACK
 
 if data == "back":
 
@@ -158,36 +157,35 @@ if data == "back":
         await query.message.delete()
     except:
         pass
-
     await context.bot.send_message(
         chat_id=query.message.chat_id,
         text="""
-     🏠 <b>მთავარი მენიუ</b> 🏠
-     
+🏠 <b>მთავარი მენიუ</b> 🏠
+
 🎟️ აირჩიე ღონისძიება
 💳 გადაიხადე კრიპტოთი
 📩 მიიღე ბილეთი პირდაპირ ტელეგრამში
+
 🫶 ადმინისტრატორი @tktgeassist
 
 დაიწყე ახლავე 👇
-
 """,
         parse_mode="HTML",
         reply_markup=main_menu(),
     )
+# SHOP
 
+elif data == "shop":
+    await query.edit_message_text(
+        """
+🛒 <b>ვიტრინა</b>
 
-    # SHOP
-    elif data == "shop":
-        await query.edit_message_text(
-            """
-    🛒 <b>ვიტრინა</b>
-    
 აირჩიე სასურველი 👇
 """,
-            parse_mode="HTML",
-            reply_markup=shop_menu(),
-        )
+        parse_mode="HTML",
+        reply_markup=shop_menu(),
+    )
+    
 
     # BALANCE
     elif data == "balance":
