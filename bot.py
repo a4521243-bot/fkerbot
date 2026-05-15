@@ -202,7 +202,6 @@ elif data == "mytickets":
         ),
     )
 # DEPOSIT
-
 elif data == "deposit":
 
     await query.message.delete()
@@ -232,18 +231,19 @@ elif data == "deposit":
         ),
     )
 
-    # CATEGORIES
-    elif data == "leads":
-        keys = ["tier2", "tier1", "tool", "tlst"]
-        await query.edit_message_text(
-            """
+# CATEGORIES
+elif data == "leads":
+    keys = ["tier2", "tier1", "tool", "tlst"]
+
+    await query.edit_message_text(
+        """
 🎟️ <b>ბილეთები</b> 🎟️
 
 აირჩიე სასურველი 👇
 """,
-            parse_mode="HTML",
-            reply_markup=product_menu(keys),
-        )
+        parse_mode="HTML",
+        reply_markup=product_menu(keys),
+    )
 
     elif data == "cards":
         keys = ["crc", "trc"]
