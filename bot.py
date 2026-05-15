@@ -96,7 +96,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # GIF გაგზავნა
     msg = await context.bot.send_animation(
         chat_id=update.effective_chat.id,
-        animation="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDVja3h5aHB2NnZxN3p1MmZuazQ2bndjOGNwMG5pbWFsMmlzMW00MSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/C5CelBatjgLb8lFtZx/giphy.gif",
+        animation="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTVhanh4MDlneng0cGlmbWJsaWlxdXZheGl2a2FvMWpxNmdyZWdsYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MD3VFsgFLey4f6lnyK/giphy.gif",
         caption="."
     )
 
